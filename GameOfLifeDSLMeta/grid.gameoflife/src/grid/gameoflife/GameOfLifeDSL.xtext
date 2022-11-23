@@ -1,0 +1,23 @@
+grammar grid.gameoflife.GameOfLifeDSL with org.eclipse.xtext.common.Terminals
+
+generate gameOfLifeDSL "http://www.gameoflife.grid/GameOfLifeDSL"
+
+
+Grid: 'Grid:' name = ID
+	
+	(cells += Cell)*
+;
+Cell: 'row:' row = INT
+	  'col:' col = INT
+	  'state:' state = State
+;
+enum State:
+	dead = 'dead' | 
+	alive = 'alive'
+;
+
+enum Operator:
+	LT = '<' |
+	EQ = '=' |
+	GT = '>'
+;
